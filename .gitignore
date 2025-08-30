@@ -1,14 +1,78 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.deb
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+# =============================================
+# .gitignore para Script de Seguridad / Anonimización
+# =============================================
 
-pkg/
-src/
+# --- Logs generados por el script ---
+*.log
+stealth.log
+/tmp/.stealth.log
+
+# --- Backups del script ---
+.stealth_backup_*
+/tmp/.stealth_backup_*
+
+# --- Archivos temporales del sistema ---
+*.tmp
+*.temp
+*~
+
+# --- Archivos de bloqueo / swap ---
+*.swp
+*.swo
+*.lock
+.DS_Store
+
+# --- Backups de sesión ---
+.bash_history
+.zsh_history
+.history
+
+# --- Credenciales accidentalmente expuestas ---
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- Datos sensibles de prueba ---
+secrets.txt
+credentials.txt
+access_tokens.txt
+
+# --- Binarios compilados (later) ---
+/bin/
+/obj/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# --- Documentación generada ---
+/docs/build/
+/site/
+
+# --- Entornos virtuales / contenedores ---
+/venv/
+/env/
+/.venv/
+/virtualenv/
+*.venv/
+
+# --- IDE / Editores ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Sistema operativo ---
+Thumbs.db
+ehthumbs.db
+
+# --- Archivos de package managers (for expansion) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+__pycache__/
+*.py[cod]
