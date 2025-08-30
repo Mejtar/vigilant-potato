@@ -2,65 +2,6 @@
 Suite de ofuscación sistemática con backup integrado y reversibilidad. Modifica MAC, hostname, DNS, interfaces y firewall mientras mantiene capacidad de restauración. Fines educativos solamente.
 System Privacy Enhancement Toolkit
 
-### ADVERTENCIA LEGAL IMPORTANTE
-Este software se proporciona ÚNICAMENTE con fines educativos y de investigación de seguridad autorizada.
-
-El autor de este repositorio:
-
-No fomenta ni aprueba el uso ilegal de este software
-
-No se hace responsable del mal uso que terceros puedan dar a estas herramientas
-
-Recomienda usar este código solo en sistemas propios o con autorización explícita por escrito
----
-### Propósito Educativo
-Este proyecto tiene como objetivo:
-
-Educar sobre técnicas de privacidad digital y hardening de sistemas
-
-Demostrar conceptos de seguridad informática y ofuscación
-
-Servir como material de estudio para profesionales de ciberseguridad
-
-Investigar métodos de protección contra fingerprinting
----
-
-### Uso Apropiado
-El uso de este software es apropiado para:
-
-Entornos de testing controlados y laboratorios educativos
-
-Investigación de seguridad autorizada y pentesting ethical
-
-Hardening de sistemas propios y protección de privacidad
-
-Evaluación de medidas defensivas en infraestructura propia
----
-
-### Uso Inapropiado
-Queda estrictamente prohibido usar este software para:
-
-Actividades ilegales o no autorizadas
-
-Vulnerar sistemas ajenos sin autorización explícita
-
-Eludir medidas de seguridad legítimas de terceros
-
-Cualquier acción que viole leyes locales o internacionales
----
-
-### Responsabilidad del Usuario
-Al utilizar este software, usted acepta:
-
-Cumplir con todas las leyes aplicables en su jurisdicción
-
-Obtener los permisos necesarios antes de su uso
-
-Asumir toda responsabilidad por sus acciones
-
-No usar estas herramientas para causar daño o perjuicio
----
-
 ### Características Técnicas
 El script implementa las siguientes funcionalidades:
 
@@ -100,4 +41,85 @@ Soporte para múltiples distribuciones Linux
 
 Sistema de logging con colores y timestamp
 
-¡Diviertete!
+### Paquetes necesarios
+# Sistemas basados en Debian/Ubuntu
+sudo apt install macchanger iptables-persistent
+
+# Sistemas basados en RHEL/CentOS
+sudo yum install macchanger iptables-services
+---
+### Guia de uso
+# Descargar el script
+git clone https://github.com/Mejtar/vigilant-potato
+cd system-privacy-toolkit
+
+# Dar permisos de ejecución
+chmod +x stealth_script.sh
+
+# Ejecutar (requiere root)
+sudo ./stealth_script.sh run
+---
+### Backup
+# Usar el script de restauración automático
+sudo /ruta/al/backup/restore.sh
+
+# O mediante el script principal
+sudo ./stealth_script.sh restore /ruta/al/backup
+---
+### Personalizacion
+# Vendors OUI para MAC spoofing
+vendors=("00:50:56" "00:0C:29" "08:00:27")
+
+# Hostnames para ofuscación
+hostnames=("HP-LaserJet" "Canon-MX922" "Epson-WF3640")
+
+# Servidores DNS alternativos
+dns_servers=("1.1.1.1" "9.9.9.9" "8.8.8.8")
+---
+
+Logging y Monitoreo
+El script genera logs detallados en /tmp/.stealth.log que incluyen:
+
+Timestamp de todas las operaciones
+
+Estados de éxito/error de cada función
+
+Configuraciones anteriores y nuevas
+
+Advertencias y validaciones
+
+### Limitaciones Conocidas
+Algunas características requieren reinicio para efecto completo
+
+La persistencia de iptables varía entre distribuciones
+
+Systemd-resolved puede requerir configuración manual adicional
+
+El renombrado de interfaces puede afectar configuraciones de red existentes
+
+### Contribución
+Las contribuciones son bienvenidas bajo estas condiciones:
+
+ -Solo se aceptan mejoras con propósito educativo
+
+ -Deben mantener la funcionalidad de restauración
+
+ -Deben incluir validaciones de seguridad apropiadas
+
+ -No deben facilitar usos maliciosos
+---
+Para reportar vulnerabilidades o problemas:
+
+ -No abra issues públicos para problemas de seguridad
+
+ -Contacte directamente al maintainer
+
+ -Provea detalles del entorno y pasos para reproducir
+---
+
+Última actualización: $(date +%Y-%m-%d)
+Mantenedor: mejtar
+Versión: 1.0.0
+
+Este proyecto se distribuye bajo la licencia MIT con la adición explícita de que está prohibido su uso para actividades ilegales. Ver archivo LICENSE para detalles.
+Use bajo su propia responsabilidad y solo en entornos autorizados.
