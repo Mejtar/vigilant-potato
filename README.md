@@ -117,9 +117,9 @@ Para reportar vulnerabilidades o problemas:
  -Provea detalles del entorno y pasos para reproducir
 ---
 
-Última actualización: $(date +%Y-%m-%d)
+Última actualización: 28/08/2025
 Mantenedor: mejtar
 Versión: 1.0.0
 
-Este proyecto se distribuye bajo la licencia MIT con la adición explícita de que está prohibido su uso para actividades ilegales. Ver archivo LICENSE para detalles.
+Este proyecto se distribuye bajo la licencia MIT con la adición explícita de que está prohibido su uso para actividades ilegales. Ver archivo [DISCLAIMER](Legal/DISCLAIMER.md) para detalles.
 Use bajo su propia responsabilidad y solo en entornos autorizados.
