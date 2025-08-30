@@ -130,6 +130,6 @@ Para reportar vulnerabilidades o problemas:
 
 ## Licencia y Disclaimer
 
-Este proyecto se distribuye bajo la **licencia MIT** con la adición explícita de que está **prohibido su uso para actividades ilegales**. Ver archivo [DISCLAIMER](Legal/DISCLAIMER.md) para detalles.
+Este proyecto se distribuye bajo la **licencia APACHE 2.0** con la adición explícita de que está **prohibido su uso para actividades ilegales**. Ver archivo [DISCLAIMER](Legal/DISCLAIMER.md) para detalles.
 
 **Use bajo su propia responsabilidad y solo en entornos autorizados.**
