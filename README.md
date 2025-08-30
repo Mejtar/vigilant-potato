@@ -32,7 +32,6 @@ Suite de ofuscación sistemática con backup integrado y reversibilidad. Modific
 ### Paquetes Necesarios
 
 ```bash
-# Sistemas basados en Debian/Ubuntu
 sudo apt install macchanger iptables-persistent
 
 # Sistemas basados en RHEL/CentOS
@@ -42,11 +41,9 @@ sudo yum install macchanger iptables-services
 ### Descarga e Instalación
 
 ```bash
-# Descargar el repositorio
 git clone https://github.com/Mejtar/vigilant-potato
 cd vigilant-potato
 
-# Dar permisos de ejecución
 chmod 711 configuration_manager.sh
 ```
 
@@ -55,14 +52,13 @@ chmod 711 configuration_manager.sh
 ### Ejecución Principal
 
 ```bash
-# Ejecutar (requiere root)
+#requiere root
 sudo ./configuration_manager.sh run
 ```
 
 ### Restauración del Sistema
 
 ```bash
-# Usar el script de restauración automático
 sudo /tmp/.stealth_backup_YYYYMMDD_HHMMSS/restore.sh
 
 # O mediante el script principal
@@ -76,21 +72,19 @@ sudo ./stealth_script.sh restore /tmp/.stealth_backup_YYYYMMDD_HHMMSS
 ### Configuración de Vendors OUI
 
 ```bash
-# Vendors OUI para MAC spoofing
 vendors=("00:50:56" "00:0C:29" "08:00:27")
 ```
 
 ### Hostnames Disponibles
 
 ```bash
-# Hostnames para ofuscación
 hostnames=("HP-LaserJet" "Canon-MX922" "Epson-WF3640")
 ```
 
 ### Servidores DNS
 
 ```bash
-# Servidores DNS alternativos
+# Servidores
 dns_servers=("1.1.1.1" "9.9.9.9" "8.8.8.8")
 ```
 
