@@ -51,13 +51,13 @@ sudo yum install macchanger iptables-services
 ### Guia de uso
 # Descargar el script
 git clone https://github.com/Mejtar/vigilant-potato
-cd system-privacy-toolkit
+cd vigilant-potato
 
 # Dar permisos de ejecución
-chmod +x stealth_script.sh
+chmod 711 configuration_manager.sh
 
 # Ejecutar (requiere root)
-sudo ./stealth_script.sh run
+sudo ./configuration_manager.sh run
 ---
 ### Backup
 # Usar el script de restauración automático
@@ -78,7 +78,7 @@ dns_servers=("1.1.1.1" "9.9.9.9" "8.8.8.8")
 ---
 
 Logging y Monitoreo
-El script genera logs detallados en /tmp/.stealth.log que incluyen:
+El script genera logs detallados en /tmp/.stealth.log si hay permisos, en distros mas estrictos, se usara configure_log_file() para cambiar a /var/log o /$HOME.
 
 Timestamp de todas las operaciones
 
