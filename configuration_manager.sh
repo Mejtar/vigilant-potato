@@ -23,13 +23,54 @@ NC='\033[0m'
 
 # Configuración
 BACKUP_DIR="/tmp/.stealth_backup_$(date +%s)"
-LOG_FILE="/tmp/.stealth.log"
+LOG_FILE=""
 ORIGINAL_HOSTNAME=""
 ORIGINAL_MAC=""
 ORIGINAL_INTERFACE=""
 
+#En caso de tener complifctos con /tmp y los permisos.
+configure_log_file() {
+    # Intentar en /tmp/ primero (primera opción)
+    LOG_FILE="/tmp/.stealth_$(date +%s).log"
+    if touch "$LOG_FILE" 2>/dev/null; then
+        chmod 644 "$LOG_FILE" 2>/dev/null
+        log "Log configurado en: $LOG_FILE"
+        return 0
+    fi
+    
+    # Fallback a /var/log/ (segunda opción)
+    LOG_FILE="/var/log/stealth_$(date +%s).log"
+    if sudo touch "$LOG_FILE" 2>/dev/null; then
+        sudo chmod 644 "$LOG_FILE" 2>/dev/null
+        log "Log configurado en: $LOG_FILE (usando sudo)"
+        return 0
+    fi
+    
+    # Fallback a home del usuario (tercera opción)
+    LOG_FILE="$HOME/stealth_$(date +%s).log"
+    if touch "$LOG_FILE" 2>/dev/null; then
+        chmod 644 "$LOG_FILE" 2>/dev/null
+        log "Log configurado en: $LOG_FILE"
+        return 0
+    fi
+    
+    # Último recurso: log temporal en memoria
+    LOG_FILE=""
+    warning "No se pudo crear archivo de log. Usando salida estándar solamente."
+}
+
 log() {
-    echo -e "${GREEN}[$(date '+%H:%M:%S')]${NC} $1" | tee -a "$LOG_FILE"
+    local log_msg="${GREEN}[$(date '+%H:%M:%S')]${NC} $1"
+    echo -e "$log_msg"
+    
+    # Solo escribir en archivo si LOG_FILE está configurado y es escribible
+    if [[ -n "$LOG_FILE" ]] && { [[ -w "$LOG_FILE" ]] || touch "$LOG_FILE" 2>/dev/null; }; then
+        echo "$log_msg" >> "$LOG_FILE" 2>/dev/null || {
+            # Si falla la escritura, desactivar logging a archivo
+            warning "Error escribiendo en log. Desactivando logging a archivo."
+            LOG_FILE=""
+        }
+    fi
 }
 
 error() {
@@ -436,6 +477,7 @@ EOF
 
 # Función principal
 main() {
+    configure_log_file
     log "=== INICIANDO SCRIPT DE EVASIÓN AVANZADO ==="
     
     # Crear backup
